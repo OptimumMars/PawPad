@@ -24,10 +24,10 @@ function Navigation({ isLoaded }) {
     return (
         <div className="navbar_component">
             <div>
-                <h2>PawPad</h2>
+                <h2 className="navbar_title">PawPad</h2>
             </div>
-            <div className="auth_buttons">
-                <div>
+            <div>
+                <div className="auth_buttons">
                     <NavLink exact to="/" className="buttons">Home</NavLink>
                     {isLoaded && sessionLinks}
                 </div>

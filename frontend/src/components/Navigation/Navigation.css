@@ -1,7 +1,8 @@
 .navbar_component {
     display: flex;
     flex-direction: row;
-
+    justify-content: center;
+    border-bottom: 0.25rem solid black;
 }
 
 .auth_buttons {
@@ -13,4 +14,9 @@
     border: 0.25rem solid orange;
     background-color: orange;
     margin: 0.25rem;
+}
+
+.navbar_title {
+    justify-self: center;
+
 }
