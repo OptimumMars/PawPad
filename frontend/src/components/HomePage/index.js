@@ -11,9 +11,9 @@ const HomePage = () => {
 
     useEffect(() => {
         async function fetchPets() {
-            if (user === null) {
+            if (!user) {
                 return null;
-            };
+            }
             await dispatch(getPets(user.id));
         }
         fetchPets()

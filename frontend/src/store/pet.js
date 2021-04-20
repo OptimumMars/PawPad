@@ -23,19 +23,19 @@ export const getPets = (userId) => async (dispatch) => {
     dispatch(setPets(pets));
 }
 
-const initialState = { pets: null };
+const initialState = {};
 
 const petReducer = (state = initialState, action) => {
     let newState;
     switch (action.type) {
         case SET_PETS:
             newState = Object.assign({}, state);
-            newState.user = action.payload;
+            newState.pets = action.payload;
             return newState;
-        case REMOVE_PET:
-            newState = Object.assign({}, state);
-            newState.user = null;
-            return newState;
+        // case REMOVE_PET:
+        //     newState = Object.assign({}, state);
+        //     newState.pet = null;
+        //     return newState;
         default:
             return state;
     }
