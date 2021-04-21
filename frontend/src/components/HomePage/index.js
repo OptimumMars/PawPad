@@ -3,6 +3,7 @@ import * as sessionActions from '../../store/session';
 import { getPets } from '../../store/pet';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
+import "./HomePage.css"
 
 const HomePage = () => {
     const dispatch = useDispatch();
@@ -22,17 +23,17 @@ const HomePage = () => {
     const petState = useSelector(state => state.pet)
 
     return (
-        <>
+        <div className="card_page">
             <h2>Your Pets:</h2>
             { petState && petState.pets.pets.map(pet => (
-                <div key={pet.id}>
-                    <h3>
+                <div key={pet.id} className="pet_card">
+                    <h3 className="card_item">
                         <NavLink to="/">{pet.name}</NavLink>
                     </h3>
-                    <p>{pet.type}</p>
+                    <p className="card_item">{pet.type}</p>
                 </div>
             ))}
-        </>
+        </div>
     )
 }
 

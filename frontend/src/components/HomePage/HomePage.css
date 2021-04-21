@@ -1,0 +1,23 @@
+.pet_card {
+    border: orange solid 0.25rem;
+    margin: 0.75rem;
+    min-width: 20rem;
+    max-width: 20rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    background-color: orange;
+    box-shadow: 10px 10px 5px black;
+    border-radius: 5px;
+}
+
+.card_item {
+    align-self: center;
+    font-weight: 900;
+    font-size: larger;
+}
+
+.card_page{
+    display: flex;
+    flex-direction: column;
+}
