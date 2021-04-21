@@ -5,6 +5,7 @@ import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import ProtectedRoute from "./components/ProtectedRoute"
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -25,9 +26,9 @@ function App() {
           <Route path="/signup">
             <SignupFormPage />
           </Route>
-          <Route path="/">
+          <ProtectedRoute path="/">
             <HomePage />
-          </Route>
+          </ProtectedRoute>
         </Switch>
       )}
     </>

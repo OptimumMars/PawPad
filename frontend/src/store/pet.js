@@ -23,7 +23,7 @@ export const getPets = (userId) => async (dispatch) => {
     dispatch(setPets(pets));
 }
 
-const initialState = {};
+const initialState = null;
 
 const petReducer = (state = initialState, action) => {
     let newState;
