@@ -5,6 +5,7 @@ import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation";
 import HomePage from "./components/HomePage";
+import PetPage from "./components/PetPage";
 import ProtectedRoute from "./components/ProtectedRoute"
 import * as sessionActions from "./store/session";
 
@@ -20,14 +21,17 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login">
+          <Route path="/login" exact>
             <LoginFormPage />
           </Route>
-          <Route path="/signup">
+          <Route path="/signup" exact>
             <SignupFormPage />
           </Route>
-          <ProtectedRoute path="/">
+          <ProtectedRoute path="/" exact>
             <HomePage />
+          </ProtectedRoute>
+          <ProtectedRoute path="/pets/:petId" exact>
+            <PetPage />
           </ProtectedRoute>
         </Switch>
       )}
