@@ -8,15 +8,20 @@
 .auth_buttons {
     display: flex;
     flex-direction: column;
+    align-self: flex-end;
+    margin-left: 200%
 }
 
 .buttons {
     border: 0.25rem solid orange;
     background-color: orange;
     margin: 0.25rem;
+    box-shadow: 3px 3px 2px black;
+    min-width: max-content;
 }
 
 .navbar_title {
-    justify-self: center;
-
+    /* justify-self: center; */
+    font-weight: bolder;
+    font-size: xx-large;
 }

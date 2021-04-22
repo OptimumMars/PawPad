@@ -25,30 +25,30 @@ const PetPage = () => {
     return (
         <div>
             <h1>Your Pet's Page:</h1>
-            <div>
+            <div className="card_page">
                 <h2>To-Do List:</h2>
                 {pet ?
                     pet.active && pet.active.ToDos.map(todo => (
-                        <div key={todo.id}>
+                        <div key={todo.id} className="card">
                             <p>{todo.item}</p>
                         </div>
                     ))
                     : <p>loading...</p>
                 }
-                <div>
+                <div className="buttons">
                     <NavLink to={`/pets/${petId}/todos/new`} exact={true}>New Item +</NavLink>
                 </div>
                 <h2>Pet Notes:</h2>
                 {pet ?
                     pet.active && pet.active.Notes.map(note => (
-                        <div key={note.id}>
+                        <div key={note.id} className="card">
                             <h3>{note.title}</h3>
                             <p>{note.content}</p>
                         </div>
                     ))
                     : <p>loading...</p>
                 }
-                <div>
+                <div className="buttons">
                     <NavLink to={`/pets/${petId}/notes/new`} exact={true}>New Note +</NavLink>
                 </div>
             </div>
