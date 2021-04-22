@@ -1,9 +1,6 @@
 const express = require('express');
 const asyncHandler = require('express-async-handler');
 
-const { check } = require('express-validator');
-const { handleValidationErrors } = require('../../utils/validation');
-const { setTokenCookie, requireAuth } = require('../../utils/auth');
 const { User, Pet, ToDo, Note } = require('../../db/models');
 
 const router = express.Router();
@@ -12,20 +9,19 @@ const router = express.Router();
 router.get(
     '/:id(\\d+)',
     asyncHandler(async (req, res) => {
-        const petId = req.params.petId
+        const petId = req.params.id
+        console.log("pet id:", petId)
         const pet = await Pet.findByPk(petId, {
             include: [
                 {
                     model: ToDo,
-                    as: 'todos'
                 },
                 {
                     model: Note,
-                    as: 'notes'
                 }
             ]
         })
-        console.log(pet);
+        console.log("pet object:", pet);
         return res.json(pet);
     })
 );

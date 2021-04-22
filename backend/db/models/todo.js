@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   ToDo.associate = function (models) {
     // associations can be defined here
-    ToDo.belongsTo(models.Pet, { foreignKey: 'petId', as: 'pet' });
+    ToDo.belongsTo(models.Pet, { foreignKey: 'petId', as: 'todos' });
   };
   return ToDo;
 };
