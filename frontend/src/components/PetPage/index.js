@@ -12,15 +12,38 @@ const PetPage = () => {
 
     useEffect(() => {
         async function fetchActivePet() {
+            if (!petId) {
+                return null;
+            }
             await dispatch(getActivePet(petId));
         };
         fetchActivePet()
     }, [dispatch, petId])
 
+    const pet = useSelector(state => state.pet)
+
+    // let activePet
+
+    // if (pet.active) {
+    //     activePet = pet.active
+    // }
+
+    // console.log(activePet)
+
     return (
         <div>
-            <h1>this is the specific pet page</h1>
-            <>pet id is {petId}</>
+            <h1>Your Pet's Page:</h1>
+            <div>
+                <h2>To-Do List:</h2>
+                {pet ?
+                    pet.active && pet.active.ToDos.map(todo => (
+                        <div key={todo.id}>
+                            <p>{todo.item}</p>
+                        </div>
+                    ))
+                    : <p>loading...</p>
+                }
+            </div>
         </div>
     )
 }

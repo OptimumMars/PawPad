@@ -40,7 +40,7 @@ export const getActivePet = (petId) => async (dispatch) => {
     dispatch(setActive(pet));
 }
 
-const initialState = null;
+const initialState = {};
 
 const petReducer = (state = initialState, action) => {
     let newState;
