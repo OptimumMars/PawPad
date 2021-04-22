@@ -55,9 +55,7 @@ router.get(
             }
         })
 
-        return res.json({
-            pets,
-        });
+        return res.json(pets);
     }),
 );
 

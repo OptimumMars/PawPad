@@ -1,10 +1,18 @@
-const SET_PETS = 'session/setPets';
-const REMOVE_PET = 'session/removePet';
+const SET_PETS = 'pets/setPets';
+const SET_ACTIVE = 'pets/setActive'
+const REMOVE_PET = 'pets/removePet';
 
 const setPets = (pets) => {
     return {
         type: SET_PETS,
         payload: pets,
+    };
+};
+
+const setActive = (pet) => {
+    return {
+        type: SET_ACTIVE,
+        payload: pet,
     };
 };
 
@@ -23,6 +31,15 @@ export const getPets = (userId) => async (dispatch) => {
     dispatch(setPets(pets));
 }
 
+export const getActivePet = (petId) => async (dispatch) => {
+    const response = await fetch(`/api/pets/${petId}`, {
+        method: 'GET',
+        headers: { 'Content-Type': 'application/json' }
+    })
+    const pet = await response.json();
+    dispatch(setActive(pet));
+}
+
 const initialState = null;
 
 const petReducer = (state = initialState, action) => {
@@ -31,6 +48,10 @@ const petReducer = (state = initialState, action) => {
         case SET_PETS:
             newState = Object.assign({}, state);
             newState.pets = action.payload;
+            return newState;
+        case SET_ACTIVE:
+            newState = Object.assign({}, state);
+            newState.active = action.payload;
             return newState;
         // case REMOVE_PET:
         //     newState = Object.assign({}, state);

@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import * as sessionActions from '../../store/session';
-import petReducer, { getPets } from '../../store/pet';
+import petReducer, { getActivePet } from '../../store/pet';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import "./PetPage.css"
 
 const PetPage = () => {
-    // const dispatch = useDispatch();
+    const dispatch = useDispatch();
 
     let { petId } = useParams()
+
+    useEffect(() => {
+        async function fetchActivePet() {
+            await dispatch(getActivePet(petId));
+        };
+        fetchActivePet()
+    }, [dispatch, petId])
 
     return (
         <div>
