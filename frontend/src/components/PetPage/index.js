@@ -22,14 +22,6 @@ const PetPage = () => {
 
     const pet = useSelector(state => state.pet)
 
-    // let activePet
-
-    // if (pet.active) {
-    //     activePet = pet.active
-    // }
-
-    // console.log(activePet)
-
     return (
         <div>
             <h1>Your Pet's Page:</h1>
@@ -43,8 +35,24 @@ const PetPage = () => {
                     ))
                     : <p>loading...</p>
                 }
+                <div>
+                    <NavLink to={`/pets/${petId}/todos/new`} exact={true}>New Item +</NavLink>
+                </div>
+                <h2>Pet Notes:</h2>
+                {pet ?
+                    pet.active && pet.active.Notes.map(note => (
+                        <div key={note.id}>
+                            <h3>{note.title}</h3>
+                            <p>{note.content}</p>
+                        </div>
+                    ))
+                    : <p>loading...</p>
+                }
+                <div>
+                    <NavLink to={`/pets/${petId}/notes/new`} exact={true}>New Note +</NavLink>
+                </div>
             </div>
-        </div>
+        </div >
     )
 }
 
