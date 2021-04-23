@@ -18,6 +18,7 @@
     margin: 0.25rem;
     box-shadow: 3px 3px 2px black;
     min-width: max-content;
+    text-decoration: none;
 }
 
 .navbar_title {

@@ -36,7 +36,7 @@ const PetPage = () => {
                     : <p>loading...</p>
                 }
                 <div className="buttons">
-                    <NavLink to={`/pets/${petId}/todos/new`} exact={true}>New Item +</NavLink>
+                    <NavLink to={`/pets/${petId}/todos/new`} exact={true} className="button_text">New Item +</NavLink>
                 </div>
                 <h2>Pet Notes:</h2>
                 {pet ?
@@ -49,7 +49,7 @@ const PetPage = () => {
                     : <p>loading...</p>
                 }
                 <div className="buttons">
-                    <NavLink to={`/pets/${petId}/notes/new`} exact={true}>New Note +</NavLink>
+                    <NavLink to={`/pets/${petId}/notes/new`} exact={true} className="button_text">New Note +</NavLink>
                 </div>
             </div>
         </div >
