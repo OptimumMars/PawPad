@@ -2,7 +2,7 @@ import { fetch } from './csrf';
 
 const SET_PETS = 'pets/setPets';
 const SET_ACTIVE = 'pets/setActive'
-const REMOVE_PET = 'pets/removePet';
+// const REMOVE_PET = 'pets/removePet';
 
 const setPets = (pets) => {
     return {
@@ -18,11 +18,11 @@ const setActive = (pet) => {
     };
 };
 
-const removePet = () => {
-    return {
-        type: REMOVE_PET,
-    };
-};
+// const removePet = () => {
+//     return {
+//         type: REMOVE_PET,
+//     };
+// };
 
 export const getPets = (userId) => async (dispatch) => {
     const { data: pets } = await fetch(`/api/users/${userId}/pets`, {
@@ -30,6 +30,12 @@ export const getPets = (userId) => async (dispatch) => {
     })
 
     dispatch(setPets(pets));
+}
+
+export const removePet = (petId) => async (dispatch) => {
+    const response = await fetch(`/api/pets/${petId}`, {
+        method: "DELETE",
+    });
 }
 
 export const getActivePet = (petId) => async (dispatch) => {
