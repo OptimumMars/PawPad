@@ -51,6 +51,18 @@ export const newTodo = async (item, petId) => {
     return response.ok;
 }
 
+export const newNote = async (title, content, petId) => {
+    const response = await fetch('/api/notes/new', {
+        method: "POST",
+        body: JSON.stringify({
+            title,
+            content,
+            petId
+        }),
+    });
+    return response.ok;
+}
+
 const initialState = {};
 
 const petReducer = (state = initialState, action) => {

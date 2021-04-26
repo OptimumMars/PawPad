@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import * as sessionActions from '../../store/session';
 import petReducer, { getActivePet } from '../../store/pet';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect, useParams } from 'react-router-dom';

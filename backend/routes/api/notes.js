@@ -5,18 +5,19 @@ const { User, Pet, ToDo, Note } = require('../../db/models');
 
 const router = express.Router();
 
-//add a new To-Do item
+//Add a new Note
 router.post(
     '/new',
     asyncHandler(async (req, res) => {
-        const { item, petId } = req.body;
+        const { title, content, petId } = req.body;
 
-        const todo = ToDo.create({
-            item,
+        const note = Note.create({
+            title,
+            content,
             petId
-        })
+        });
 
-        await res.json(todo)
+        await res.json(note)
     })
 )
 
