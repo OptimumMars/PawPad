@@ -27,26 +27,22 @@ const PetPage = () => {
             <h1>Your Pet's Page:</h1>
             <div className="card_page">
                 <h2>To-Do List:</h2>
-                {pet ?
-                    pet.active && pet.active.ToDos.map(todo => (
-                        <div key={todo.id} className="card">
-                            <p>{todo.item}</p>
-                        </div>
-                    ))
-                    : <p>loading...</p>
+                {pet.active && pet.active.ToDos.map(todo => (
+                    <div key={todo.id} className="card">
+                        <p>{todo.item}</p>
+                    </div>
+                ))
                 }
                 <div className="buttons">
                     <NavLink to={`/pets/${petId}/todos/new`} exact={true} className="button_text">New Item +</NavLink>
                 </div>
                 <h2>Pet Notes:</h2>
-                {pet ?
-                    pet.active && pet.active.Notes.map(note => (
-                        <div key={note.id} className="card">
-                            <h3>{note.title}</h3>
-                            <p>{note.content}</p>
-                        </div>
-                    ))
-                    : <p>loading...</p>
+                {pet.active && pet.active.Notes.map(note => (
+                    <div key={note.id} className="card">
+                        <h3>{note.title}</h3>
+                        <p>{note.content}</p>
+                    </div>
+                ))
                 }
                 <div className="buttons">
                     <NavLink to={`/pets/${petId}/notes/new`} exact={true} className="button_text">New Note +</NavLink>

@@ -1,3 +1,5 @@
+import { fetch } from './csrf';
+
 const SET_PETS = 'pets/setPets';
 const SET_ACTIVE = 'pets/setActive'
 const REMOVE_PET = 'pets/removePet';
@@ -23,21 +25,30 @@ const removePet = () => {
 };
 
 export const getPets = (userId) => async (dispatch) => {
-    const response = await fetch(`/api/users/${userId}/pets`, {
+    const { data: pets } = await fetch(`/api/users/${userId}/pets`, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
     })
-    const pets = await response.json();
+
     dispatch(setPets(pets));
 }
 
 export const getActivePet = (petId) => async (dispatch) => {
-    const response = await fetch(`/api/pets/${petId}`, {
+    const { data: pet } = await fetch(`/api/pets/${petId}`, {
         method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
     })
-    const pet = await response.json();
+
     dispatch(setActive(pet));
+}
+
+export const newTodo = async (item, petId) => {
+    const response = await fetch(`/api/todos/new`, {
+        method: "POST",
+        body: JSON.stringify({
+            item,
+            petId
+        }),
+    });
+    return response.ok;
 }
 
 const initialState = {};
