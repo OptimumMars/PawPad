@@ -20,4 +20,18 @@ router.post(
     })
 )
 
+//Delete a specific todo item
+router.delete(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const todoId = req.params.id
+        console.log('todoId:', todoId)
+
+        const todo = await ToDo.findByPk(todoId);
+        console.log('todo:', todo)
+
+        await todo.destroy();
+    })
+)
+
 module.exports = router

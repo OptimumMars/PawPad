@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import petReducer, { getActivePet } from '../../store/pet';
+import petReducer, { getActivePet, removeTodo } from '../../store/pet';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import "./PetPage.css"
@@ -21,6 +21,10 @@ const PetPage = () => {
 
     const pet = useSelector(state => state.pet)
 
+    const todoRemove = (todoId) => async () => {
+        await dispatch(removeTodo(todoId));
+    };
+
     return (
         <div>
             <h1>Your Pet's Page:</h1>
@@ -29,6 +33,9 @@ const PetPage = () => {
                 {pet.active && pet.active.ToDos.map(todo => (
                     <div key={todo.id} className="card">
                         <p>{todo.item}</p>
+                        <form onSubmit={todoRemove(todo.id)}>
+                            <button type="submit">X</button>
+                        </form>
                     </div>
                 ))
                 }

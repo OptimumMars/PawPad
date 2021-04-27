@@ -32,8 +32,14 @@ export const getPets = (userId) => async (dispatch) => {
     dispatch(setPets(pets));
 }
 
-export const removePet = (petId) => async (dispatch) => {
+export const removePet = (petId) => async () => {
     const response = await fetch(`/api/pets/${petId}`, {
+        method: "DELETE",
+    });
+}
+
+export const removeTodo = (todoId) => async () => {
+    const response = await fetch(`/api/todos/${todoId}`, {
         method: "DELETE",
     });
 }

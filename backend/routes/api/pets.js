@@ -31,10 +31,8 @@ router.delete(
     '/:id(\\d+)',
     asyncHandler(async (req, res) => {
         const petId = req.params.id
-        console.log("petId:", petId)
 
         const pet = await Pet.findByPk(petId);
-        console.log("pet:", pet)
 
         await pet.destroy();
     })
