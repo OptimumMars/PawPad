@@ -44,6 +44,12 @@ export const removeTodo = (todoId) => async () => {
     });
 }
 
+export const removeNote = (noteId) => async () => {
+    const response = await fetch(`/api/notes/${noteId}`, {
+        method: "DELETE",
+    });
+}
+
 export const getActivePet = (petId) => async (dispatch) => {
     const { data: pet } = await fetch(`/api/pets/${petId}`, {
         method: 'GET',

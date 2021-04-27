@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import petReducer, { getActivePet, removeTodo } from '../../store/pet';
+import { getActivePet, removeTodo, removeNote } from '../../store/pet';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import "./PetPage.css"
@@ -25,6 +25,10 @@ const PetPage = () => {
         await dispatch(removeTodo(todoId));
     };
 
+    const noteRemove = (noteId) => async () => {
+        await dispatch(removeNote(noteId));
+    };
+
     return (
         <div>
             <h1>Your Pet's Page:</h1>
@@ -47,6 +51,9 @@ const PetPage = () => {
                     <div key={note.id} className="card">
                         <h3>{note.title}</h3>
                         <p>{note.content}</p>
+                        <form onSubmit={noteRemove(note.id)}>
+                            <button type="submit">Remove</button>
+                        </form>
                     </div>
                 ))
                 }

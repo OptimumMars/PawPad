@@ -21,4 +21,16 @@ router.post(
     })
 )
 
+//Delete a specific Note
+router.delete(
+    '/:id(\\d+)',
+    asyncHandler(async (req, res) => {
+        const noteId = req.params.id
+
+        const note = await Note.findByPk(noteId);
+
+        await note.destroy();
+    })
+)
+
 module.exports = router
