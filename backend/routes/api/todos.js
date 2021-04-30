@@ -25,10 +25,8 @@ router.delete(
     '/:id(\\d+)',
     asyncHandler(async (req, res) => {
         const todoId = req.params.id
-        console.log('todoId:', todoId)
 
         const todo = await ToDo.findByPk(todoId);
-        console.log('todo:', todo)
 
         await todo.destroy();
     })
@@ -38,13 +36,10 @@ router.delete(
 router.put(
     '/:id(\\d+)/check',
     asyncHandler(async (req, res) => {
-        console.log("Router.PUT being run")
-
         const todoId = { where: { id: req.params.id } }
         const checked = { checked: req.body.checked }
 
         await ToDo.update(checked, todoId)
-        console.log("todo has been updated")
 
         return res.json({
             todoId,

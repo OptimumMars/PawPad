@@ -10,7 +10,7 @@ router.get(
     '/:id(\\d+)',
     asyncHandler(async (req, res) => {
         const petId = req.params.id
-        console.log("pet id:", petId)
+
         const pet = await Pet.findByPk(petId, {
             include: [
                 {
@@ -21,7 +21,7 @@ router.get(
                 }
             ]
         })
-        console.log("pet object:", pet);
+
         return res.json(pet);
     })
 );
