@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getActivePet, removeTodo, removeNote } from '../../store/pet';
+import { getActivePet, removeTodo, removeNote, changeCheck } from '../../store/pet';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Redirect, useParams } from 'react-router-dom';
 import "./PetPage.css"
@@ -29,13 +29,22 @@ const PetPage = () => {
         await dispatch(removeNote(noteId));
     };
 
+    const changeValue = (todoId, checked) => async () => {
+        try {
+            await changeCheck(todoId, checked).then(window.location.reload())
+        } catch (error) {
+            console.error(error)
+        }
+    };
+
     return (
         <div>
             <h1>Your Pet's Page:</h1>
             <div className="card_page">
                 <h2>To-Do List:</h2>
                 {pet.active && pet.active.ToDos.map(todo => (
-                    <div key={todo.id} className="card">
+                    <div key={todo.id} className="card_todo">
+                        <input type="checkbox" checked={todo.checked} onChange={changeValue(todo.id, todo.checked)}></input>
                         <p>{todo.item}</p>
                         <form onSubmit={todoRemove(todo.id)}>
                             <button type="submit">X</button>

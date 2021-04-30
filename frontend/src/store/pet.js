@@ -1,5 +1,6 @@
 import { fetch } from './csrf';
 
+
 const SET_PETS = 'pets/setPets';
 const SET_ACTIVE = 'pets/setActive'
 // const REMOVE_PET = 'pets/removePet';
@@ -78,6 +79,19 @@ export const newNote = async (title, content, petId) => {
             petId
         }),
     });
+    return response.ok;
+}
+
+export const changeCheck = async (todoId, currentCheck) => {
+    const checked = !currentCheck;
+
+    const response = await fetch(`/api/todos/${todoId}/check`, {
+        method: "PUT",
+        body: JSON.stringify({
+            checked
+        }),
+    });
+
     return response.ok;
 }
 

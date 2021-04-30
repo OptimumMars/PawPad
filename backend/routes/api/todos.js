@@ -34,4 +34,23 @@ router.delete(
     })
 )
 
+//Update the checked status of a todo item
+router.put(
+    '/:id(\\d+)/check',
+    asyncHandler(async (req, res) => {
+        console.log("Router.PUT being run")
+
+        const todoId = { where: { id: req.params.id } }
+        const checked = { checked: req.body.checked }
+
+        await ToDo.update(checked, todoId)
+        console.log("todo has been updated")
+
+        return res.json({
+            todoId,
+            checked,
+        });
+    })
+)
+
 module.exports = router
