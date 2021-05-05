@@ -34,35 +34,39 @@ function LoginFormPage() {
     }
 
     return (
-        <>
-            <form onSubmit={handleSubmit}>
+        <div className="form-container">
+            <form onSubmit={handleSubmit} className="form">
                 <ul>
                     {errors.map((error, idx) => <li key={idx}>{error}</li>)}
                 </ul>
-                <label>
-                    Username or Email
+                <div className="form-field">
+                    <label>
+                        Username or Email
         <input
-                        type="text"
-                        value={credential}
-                        onChange={(e) => setCredential(e.target.value)}
-                        required
-                    />
-                </label>
-                <label>
-                    Password
+                            type="text"
+                            value={credential}
+                            onChange={(e) => setCredential(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <div className="form-field">
+                    <label>
+                        Password
         <input
-                        type="password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
-                </label>
-                <button type="submit">Log In</button>
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                    </label>
+                </div>
+                <button type="submit" className="form-button">Log In</button>
             </form>
-            <form onSubmit={demoLogin}>
+            <form onSubmit={demoLogin} className="demo-button">
                 <button type="submit">Demo User</button>
             </form>
-        </>
+        </div>
     );
 }
 
