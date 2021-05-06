@@ -21,9 +21,11 @@ const PetPage = () => {
 
     const pet = useSelector(state => state.pet)
 
-    // useEffect(() => {
-
-    // }, [])
+    // useEffect(async () => {
+    //     await pet.active.ToDos.forEach((todo) => {
+    //         changeCheck(todo.id, todo.checked)
+    //     })
+    // }, [pet.active])
 
     const todoRemove = (todoId) => async () => {
         await dispatch(removeTodo(todoId));

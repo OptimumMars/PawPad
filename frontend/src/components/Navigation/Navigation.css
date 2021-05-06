@@ -26,3 +26,30 @@
     font-weight: bolder;
     font-size: xx-large;
 }
+
+.logout_div {
+    align-self: center;
+}
+
+.logout_button {
+    border: 0.25rem solid orange;
+    margin: 0.25rem;
+    text-decoration: none;
+    box-shadow: 3px 3px 2px black;
+    background-color: orange;
+    min-width: max-content;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out, transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.logout_button:hover,
+.logout_button:focus {
+    background: darkgoldenrod;
+}
+
+.logout_button:active {
+    transform: scale(0.99);
+}
