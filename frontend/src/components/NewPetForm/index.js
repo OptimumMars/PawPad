@@ -27,9 +27,9 @@ const PetForm = () => {
     };
 
     return (
-        <div>
-            <form onSubmit={onSubmit}>
-                <div>
+        <div className="form-container">
+            <form onSubmit={onSubmit} className="form">
+                <div className="form-field">
                     <label>Pet's Name:</label>
                     <input
                         type="text"
@@ -37,7 +37,7 @@ const PetForm = () => {
                         onChange={updateName}
                         value={name}></input>
                 </div>
-                <div>
+                <div className="form-field">
                     <label>Pet Type:</label>
                     <input
                         type="text"
@@ -45,7 +45,7 @@ const PetForm = () => {
                         onChange={updateType}
                         value={type}></input>
                 </div>
-                <button type="submit">Add Pet</button>
+                <button type="submit" className="form-button">Add Pet</button>
             </form>
 
         </div>

@@ -29,25 +29,27 @@ const NewNote = () => {
     return (
         <div>
             <h1>New Note:</h1>
-            <form onSubmit={onSubmit}>
-                <div>
-                    <label>Title:</label>
-                    <input
-                        type="text"
-                        name="title"
-                        onChange={updateTitle}
-                        value={title}></input>
-                </div>
-                <div>
-                    <label>Content:</label>
-                    <input
-                        type="textbox"
-                        name="content"
-                        onChange={updateContent}
-                        value={content}></input>
-                </div>
-                <button type="submit">Add Note</button>
-            </form>
+            <div className="form-container">
+                <form onSubmit={onSubmit} className="form">
+                    <div className="form-field">
+                        <label>Title:</label>
+                        <input
+                            type="text"
+                            name="title"
+                            onChange={updateTitle}
+                            value={title}></input>
+                    </div>
+                    <div className="form-field">
+                        <label>Content:</label>
+                        <input
+                            type="textbox"
+                            name="content"
+                            onChange={updateContent}
+                            value={content}></input>
+                    </div>
+                    <button type="submit" className="form-button">Add Note</button>
+                </form>
+            </div>
         </div>
     )
 }

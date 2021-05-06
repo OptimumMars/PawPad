@@ -24,17 +24,19 @@ const NewToDo = () => {
     return (
         <div>
             <h1>New To-Do Item:</h1>
-            <form onSubmit={onSubmit}>
-                <div>
-                    <label>Item:</label>
-                    <input
-                        type="text"
-                        name="item"
-                        onChange={updateItem}
-                        value={item}></input>
-                </div>
-                <button type="submit">Add Item</button>
-            </form>
+            <div className="form-container">
+                <form onSubmit={onSubmit} className="form">
+                    <div className="form-field">
+                        <label>Item:</label>
+                        <input
+                            type="text"
+                            name="item"
+                            onChange={updateItem}
+                            value={item}></input>
+                    </div>
+                    <button type="submit" className="form-button">Add Item</button>
+                </form>
+            </div>
         </div>
     )
 }

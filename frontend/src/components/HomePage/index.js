@@ -39,7 +39,7 @@ const HomePage = () => {
                 </div>
             ))
             }
-            <div>
+            <div className="button">
                 <NavLink to={`/${user.id}/pets/new`} exact={true}>Add a Pet</NavLink>
             </div>
         </div>
