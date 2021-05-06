@@ -82,6 +82,18 @@ export const newNote = async (title, content, petId) => {
     return response.ok;
 }
 
+export const newPet = async (name, type, userId) => {
+    const response = await fetch('/api/pets/new', {
+        method: "POST",
+        body: JSON.stringify({
+            name,
+            type,
+            userId
+        }),
+    });
+    return response.ok;
+}
+
 export const changeCheck = async (todoId, currentCheck) => {
     const checked = !currentCheck;
 

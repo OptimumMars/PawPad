@@ -8,6 +8,7 @@ import HomePage from "./components/HomePage";
 import PetPage from "./components/PetPage";
 import NewToDo from "./components/NewToDo";
 import NewNote from "./components/NewNote";
+import PetForm from "./components/NewPetForm";
 import ProtectedRoute from "./components/ProtectedRoute"
 import * as sessionActions from "./store/session";
 
@@ -40,6 +41,9 @@ function App() {
           </ProtectedRoute>
           <ProtectedRoute path="/pets/:petId/notes/new" exact>
             <NewNote />
+          </ProtectedRoute>
+          <ProtectedRoute path="/:userId/pets/new" exact>
+            <PetForm />
           </ProtectedRoute>
         </Switch>
       )}

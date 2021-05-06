@@ -1,3 +1,7 @@
+.title {
+    margin-left: 3.5rem;
+}
+
 .pet_card {
     border: orange solid 0.25rem;
     margin: 0.75rem;

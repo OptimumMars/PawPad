@@ -21,6 +21,10 @@ const PetPage = () => {
 
     const pet = useSelector(state => state.pet)
 
+    // useEffect(() => {
+
+    // }, [])
+
     const todoRemove = (todoId) => async () => {
         await dispatch(removeTodo(todoId));
     };

@@ -26,6 +26,22 @@ router.get(
     })
 );
 
+//Add a new pet
+router.post(
+    '/new',
+    asyncHandler(async (req, res) => {
+        const { name, type, userId } = req.body;
+
+        const pet = Pet.create({
+            name,
+            type,
+            userId
+        });
+
+        await res.json(pet)
+    })
+)
+
 //Delete a specific pet
 router.delete(
     '/:id(\\d+)',

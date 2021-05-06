@@ -28,7 +28,7 @@ const HomePage = () => {
 
     return (
         <div className="card_page">
-            <h2>Your Pets:</h2>
+            <h2 className="title">Your Pets:</h2>
             {petState.pets && petState.pets.map(pet => (
                 <div key={pet.id} className="pet_card">
                     <NavLink exact to={`/pets/${pet.id}`} className="card_item">{pet.name}</NavLink>
@@ -39,6 +39,9 @@ const HomePage = () => {
                 </div>
             ))
             }
+            <div>
+                <NavLink to={`/${user.id}/pets/new`} exact={true}>Add a Pet</NavLink>
+            </div>
         </div>
     )
 }
