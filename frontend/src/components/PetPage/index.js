@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { getActivePet, removeTodo, removeNote, changeCheck } from '../../store/pet';
+import { getActivePet, removeTodo, removeNote } from '../../store/pet';
 import { useDispatch, useSelector } from 'react-redux';
-import { NavLink, Redirect, useParams } from 'react-router-dom';
+import { NavLink, useParams } from 'react-router-dom';
+import CheckBox from "../CheckBox"
 import "./PetPage.css"
 
 const PetPage = () => {
@@ -21,30 +22,12 @@ const PetPage = () => {
 
     const pet = useSelector(state => state.pet)
 
-    // useEffect(async () => {
-    //     try {
-    //         await pet.active.ToDos.forEach((todo) => {
-    //             changeCheck(todo.id, todo.checked)
-    //         })
-    //     } catch (error) {
-    //         console.error(error)
-    //     }
-    // }, [pet.active])
-
     const todoRemove = (todoId) => async () => {
         await dispatch(removeTodo(todoId));
     };
 
     const noteRemove = (noteId) => async () => {
         await dispatch(removeNote(noteId));
-    };
-
-    const changeValue = (todoId, checked) => async () => {
-        try {
-            await changeCheck(todoId, checked).then(window.location.reload())
-        } catch (error) {
-            console.error(error)
-        }
     };
 
     return (
@@ -54,7 +37,7 @@ const PetPage = () => {
                 <h2>To-Do List:</h2>
                 {pet.active && pet.active.ToDos.map(todo => (
                     <div key={todo.id} className="card_todo">
-                        <input type="checkbox" checked={todo.checked} onChange={changeValue(todo.id, todo.checked)}></input>
+                        <CheckBox todo={todo} />
                         <p>{todo.item}</p>
                         <form onSubmit={todoRemove(todo.id)}>
                             <button type="submit">X</button>
