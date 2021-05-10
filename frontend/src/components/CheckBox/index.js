@@ -1,10 +1,8 @@
 import React, { useState } from "react";
-import { useDispatch } from 'react-redux';
 import { changeCheck } from "../../store/pet";
 import "./CheckBox.css"
 
 const CheckBox = ({ todo }) => {
-    const dispatch = useDispatch()
 
     let defaultCheck = todo.checked
     let todoId = todo.id
