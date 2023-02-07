@@ -2,9 +2,16 @@
 const faker = require('faker');
 const bcrypt = require('bcryptjs');
 
+//render.com options
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Users', [
+    options.tableName = 'Users';
+    return queryInterface.bulkInsert(options, [
       {
         id: 1,
         email: 'demo@user.io',
@@ -28,7 +35,10 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     const Op = Sequelize.Op;
-    return queryInterface.bulkDelete('Users', {
+
+    options.tableName = 'Users'
+
+    return queryInterface.bulkDelete(options, {
       username: { [Op.in]: ['Demo-lition', 'FakeUser1', 'FakeUser2'] }
     }, {});
   }

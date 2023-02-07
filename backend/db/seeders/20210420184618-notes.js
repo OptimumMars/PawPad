@@ -1,8 +1,16 @@
 'use strict';
 
+//render.com options
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Notes', [
+    options.tableName = 'Notes';
+
+    return queryInterface.bulkInsert(options, [
       {
         title: 'He Pranks',
         content: 'Jake is a goofy boy, but he will try to prank you just for fun',
@@ -27,6 +35,8 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Notes', null, {});
+    options.tableName = 'Notes'
+
+    return queryInterface.bulkDelete(options, null, {});
   }
 };

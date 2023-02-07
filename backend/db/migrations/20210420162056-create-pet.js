@@ -1,4 +1,11 @@
 'use strict';
+
+//render.com options
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Pets', {
@@ -31,9 +38,9 @@ module.exports = {
         type: Sequelize.DATE,
         defaultValue: Sequelize.fn('now'),
       }
-    });
+    }, options);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Pets');
+    return queryInterface.dropTable('Pets', options);
   }
 };

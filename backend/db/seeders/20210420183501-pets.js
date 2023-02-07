@@ -1,8 +1,15 @@
 'use strict';
 
+//render.com options
+let options = {};
+if (process.env.NODE_ENV === 'production') {
+  options.schema = process.env.SCHEMA;  // define your schema in options object
+}
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Pets', [{
+    options.tableName = 'Pets';
+    return queryInterface.bulkInsert(options, [{
       id: 1,
       name: 'Jake',
       type: 'cat',
@@ -18,6 +25,7 @@ module.exports = {
   },
 
   down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Pets', null, {});
+    options.tableName = 'Pets'
+    return queryInterface.bulkDelete(options, null, {});
   }
 };
