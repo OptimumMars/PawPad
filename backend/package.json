@@ -4,11 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "sequelize": "sequelize",
     "sequelize-cli": "sequelize-cli",
     "start": "per-env",
-    "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "node ./bin/www"
+    "start:development": "nodemon ./bin/www",
+    "start:production": "node ./bin/www",
+    "rebuild": "rm db/dev.db && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all",
+    "build": "node psql-setup-script.js"
   },
   "keywords": [],
   "author": "",
@@ -33,6 +36,7 @@
   },
   "devDependencies": {
     "dotenv-cli": "^4.0.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "sqlite3": "^5.1.6"
   }
 }
