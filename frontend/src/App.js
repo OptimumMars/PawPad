@@ -24,25 +24,25 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-          <Route path="/login" exact>
+          <Route exact path="/login">
             <LoginFormPage />
           </Route>
-          <Route path="/signup" exact>
+          <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <ProtectedRoute path="/" exact>
+          <ProtectedRoute exact path="/">
             <HomePage />
           </ProtectedRoute>
-          <ProtectedRoute path="/pets/:petId" exact>
+          <ProtectedRoute exact path="/pets/:petId">
             <PetPage />
           </ProtectedRoute>
-          <ProtectedRoute path="/pets/:petId/todos/new" exact>
+          <ProtectedRoute exact path="/pets/:petId/todos/new">
             <NewToDo />
           </ProtectedRoute>
-          <ProtectedRoute path="/pets/:petId/notes/new" exact>
+          <ProtectedRoute exact path="/pets/:petId/notes/new">
             <NewNote />
           </ProtectedRoute>
-          <ProtectedRoute path="/:userId/pets/new" exact>
+          <ProtectedRoute exact path="/:userId/pets/new">
             <PetForm />
           </ProtectedRoute>
         </Switch>
