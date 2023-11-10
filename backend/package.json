@@ -8,8 +8,10 @@
     "sequelize": "sequelize",
     "sequelize-cli": "sequelize-cli",
     "start": "per-env",
-    "start:development": "nodemon -r dotenv/config ./bin/www",
-    "start:production": "node ./bin/www"
+    "start:development": "nodemon ./bin/www",
+    "start:production": "node ./bin/www",
+    "rebuild": "rm db/dev.db && npx dotenv sequelize db:migrate && npx dotenv sequelize db:seed:all",
+    "build": "node psql-setup-script.js"
   },
   "keywords": [],
   "author": "",
@@ -29,11 +31,12 @@
     "morgan": "^1.10.0",
     "per-env": "^1.0.2",
     "pg": "^8.5.1",
-    "sequelize": "^5.22.3",
-    "sequelize-cli": "^5.5.1"
+    "sequelize": "^6.33.0",
+    "sequelize-cli": "^6.6.1"
   },
   "devDependencies": {
     "dotenv-cli": "^4.0.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.7",
+    "sqlite3": "^5.1.6"
   }
 }

@@ -1,14 +1,14 @@
 'use strict';
 
-//render.com options
 let options = {};
 if (process.env.NODE_ENV === 'production') {
   options.schema = process.env.SCHEMA;  // define your schema in options object
 }
 
+/** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('ToDos', {
+  async up(queryInterface, Sequelize) {
+    await queryInterface.createTable('ToDos', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -31,16 +31,16 @@ module.exports = {
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE,
-        defaultValue: Sequelize.fn('now'),
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
       }
     }, options);
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('ToDos', options);
+  async down(queryInterface, Sequelize) {
+    await queryInterface.dropTable('ToDos', options);
   }
 };
