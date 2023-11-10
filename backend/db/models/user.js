@@ -70,7 +70,7 @@ module.exports = (sequelize, DataTypes) => {
       where: {
         [Op.or]: {
           username: credential,
-          email: credential,
+          email: credential
         },
       },
     });
