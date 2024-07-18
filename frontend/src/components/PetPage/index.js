@@ -8,7 +8,7 @@ import "./PetPage.css"
 const PetPage = () => {
     const dispatch = useDispatch();
 
-    let { petId } = useParams()
+    let { petId } = useParams() // "/pets/:petId"
 
     useEffect(() => {
         async function fetchActivePet() {
